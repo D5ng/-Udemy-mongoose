@@ -8,15 +8,18 @@ mongoose.connect('mongodb://localhost:27017/relationshipDemo')
 	})
 	.catch((error => console.log(error)));
 
+
+	// user 정보
 const userSchema = new Schema({
 	username: String,
 	age: Number,
 })
 
+// tweetSchema => 트윗 포스트
 const tweetSchema = new Schema({
 	text: String,
 	likes: Number,
-	user: { type: Schema.Types.ObjectId, ref: 'User' }
+	user: { type: Schema.Types.ObjectId, ref: 'User' } // ref로 해당모델이나, 객체들을 참조 할 수 있음.
 })
 
 const User = mongoose.model('User', userSchema);
